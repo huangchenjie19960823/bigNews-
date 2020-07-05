@@ -33,6 +33,9 @@ $(function () {
                     $('#myModal').modal(); //js代码方式弹出bootstrap模态框
                     // 页面跳转应该放在模态框关闭里面
                     $('#myModal').on('hidden.bs.modal', function (e) {
+                        // 把服务器返回回来的token令牌保存起来
+                        localStorage.setItem('token', res.token);
+                        // 跳转到首页
                         window.location.href = './index.html';
                     })
                 } else {
