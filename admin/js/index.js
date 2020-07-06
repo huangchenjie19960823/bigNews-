@@ -18,7 +18,8 @@ $(function() {
     // 1.1 发送ajax请求，获取个人信息
     $.ajax({
         type: 'get',
-        url: 'http://localhost:8080/api/v1/admin/user/info',
+        // url: 'http://localhost:8080/api/v1/admin/user/info',
+        url: BigNew.user_info,  //使用的是http.js中的接口地址
         // 设置请求头（键，值）
         // headers: {
         //     'Authorization': localStorage.getItem('token')

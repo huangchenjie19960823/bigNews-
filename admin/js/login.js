@@ -18,7 +18,8 @@ $(function () {
         // 1.5 发送ajax请求完成登陆
         $.ajax({
             type: 'post',
-            url: 'http://localhost:8080/api/v1/admin/user/login',
+            // url: 'http://localhost:8080/api/v1/admin/user/login',
+            url: BigNew.user_login,  //使用http.js里面报错的接口地址
             data: {
                 username: username,
                 password: password
