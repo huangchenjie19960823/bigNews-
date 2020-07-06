@@ -41,4 +41,21 @@ $(function() {
     // 我们每次发送ajax请求，都是用jQuery发送的
     // 每次都要引入jQuery，也就是说这个引入的jQuery文件每次都会执行的
     // 所以这个全局设置卸载这个引入的jQuery文件中
+
+    // 二：登出系统
+    // 2.1 给登出按钮设置一个点击事件
+    $('.logout').on('click', function(e) {
+        // 阻止a标签的默认跳转
+        e.preventDefault();
+        if(confirm('你确定要退出吗？')) {
+            // 删除token
+            localStorage.removeItem('token');
+
+            // 跳转到登录页面
+            window.location.href = './login.html';
+        }
+    })
+    
+    
+    
 })
