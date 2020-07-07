@@ -32,7 +32,9 @@
                 <div class="form-group">
                     <label for="inputCover" class="col-sm-2 control-label">文章封面：</label>
                     <div class="col-sm-10">
+                        <!-- 预览用的img -->
                         <img src="images/pic06.jpg" class="article_cover">
+                        <!-- 选择图片的input标签 -->
                         <input name="cover" type="file" id="inputCover">
                     </div>
                 </div>
@@ -67,6 +69,17 @@
             </form>
         </div>
     </div>
+
+    <!-- 准备一个 文章类别 的模板 -->
+    <script id="article_category_temp" type="text/html">
+        {{each data v}}
+        <option value="{{v.id}}">{{v.name}}</option>
+        {{/each}}
+    </script>
+
+
+    <script src="./libs/http.js"></script>
+    <script src="./js/article_release.js"></script>
 </body>
 
 </html>

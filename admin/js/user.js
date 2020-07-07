@@ -68,7 +68,7 @@ $(function() {
                         type: 'get',
                         url: BigNew.user_info, //使用的是http.js中的接口地址
                         success: function(res) {
-                            console.log(res);
+                            // console.log(res);
                             // 1.2 个人信息显示在页面上
                             if (res.code == 200) {
                                 parent.$('.user_info>span>i').text(res.data.nickname);

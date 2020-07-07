@@ -79,18 +79,35 @@ $(function() {
             // alert('编辑')
             // 编辑的第二步：
             // 1. 获取 要编辑的文章类别的名称和别名
-            var categoryName = $('#recipient-name').val().trim(); //文章分类名称
-            var categorySlug = $('#message-text').val().trim(); //文章分类 别名
-            var categoryId = $('#categoryId').val().trim(); //文章分类 id
+            // var categoryName = $('#recipient-name').val().trim(); //文章分类名称
+            // var categorySlug = $('#message-text').val().trim(); //文章分类 别名
+            // var categoryId = $('#categoryId').val().trim(); //文章分类 id
+            // 上面三句话是获取form表单中的数据
+            // 那如果上面不是三句话，而是三十句话，那按照上面的这种写法来获取，那就会很累人
+            // 如果不想要那么累的话， 那我们就想到了 formData
+            // 因为formData可以一次性全部获取 form表单中拥有name属性标签的值
+            // 但是有个问题， formData 需要后端支持才行
+            // 那此时， 我们这个文章类别编辑的接口， 后端并没有告诉我们可以使用formData
+            // 那怎么办？那难道只能一行一行的去获取，累死人吗？
+            // jQuery很贴心，jQuery就为我们提供了一个 serialize()方法
+            // serialize()方法可以一次性的获取form表单中带有name属性的标签的值得
+            var data = $('#myModal form').serialize();
+
+
+
+
+
             // 2. 发送ajax请求完成编辑
             $.ajax({
                 type: 'post',
                 url: BigNew.category_edit,
-                data: {
-                    id: categoryId,
-                    name: categoryName,
-                    slug: categorySlug
-                },
+                // data: {
+                //     id: categoryId,
+                //     name: categoryName,
+                //     slug: categorySlug
+                // },
+                // 传递的数据参数， 是jQuery使用它的serialize() 方法帮我们获取到的数据
+                data: data,
                 success: function(e) {
                     // console.log(e);
                     if (e.code == 200) {
@@ -143,14 +160,11 @@ $(function() {
     })
 
 
-
-
-
-
-
-
-
-
-
+    // 五：给模态框中的 取消按钮设置一个点击事件
+    $('#btnCancel').on('click', function() {
+        // 把模态框中的form表单给清空
+        // form表单有一个 reset() 方法，就可以把form表单中的数据还原成默认值
+        $('#myModal form')[0].reset(); // 注意reset()方法是dom方法
+    })
 
 })
