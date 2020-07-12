@@ -21,7 +21,12 @@ $(function() {
     });
 
 
-
+    // 三：调用日期函数
+    jeDate("#testico", {
+        format: "YYYY-MM-DD",
+        isTime: false,
+        minDate: "2014-09-19 00:00:00"
+    });
 
 
 
